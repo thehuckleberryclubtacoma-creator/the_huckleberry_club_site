@@ -1,4 +1,4 @@
-<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Sat Nov 15 2025 18:19:08 GMT+0000 (Coordinated Universal Time)  -->
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Thu Nov 20 2025 01:24:16 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="68d475ef2fd07035fb084557" data-wf-site="68d4754047b0fad1e0f481e9">
 <head>
   <meta charset="utf-8">
@@ -260,7 +260,7 @@ margin: 0rem !important;
     </div>
     <div fs-scrolldisable-element="smart-nav" data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar5_component color-scheme-1 navbar w-nav">
       <div class="navbar5_container">
-        <a href="https://final-thc-site.webflow.io/" class="navbar5_logo-link w-nav-brand"><img width="275" sizes="(max-width: 479px) 96vw, 275px" alt="" src="images/image0.jpeg" loading="lazy" srcset="images/image0-p-500.jpeg 500w, images/image0-p-800.jpeg 800w, images/image0-p-1080.jpeg 1080w, images/image0.jpeg 1500w" class="navbar5_logo"></a>
+        <a href="https://final-thc-site.webflow.io/" class="navbar5_logo-link w-nav-brand"><img width="275" sizes="275px" alt="" src="images/image0.jpeg" loading="lazy" srcset="images/image0-p-500.jpeg 500w, images/image0-p-800.jpeg 800w, images/image0-p-1080.jpeg 1080w, images/image0.jpeg 1500w" class="navbar5_logo"></a>
         <nav role="navigation" class="navbar5_menu w-nav-menu">
           <div class="navbar5_menu-left">
             <a href="index.html" class="navbar5_link w-nav-link">Home</a>
@@ -988,7 +988,218 @@ margin: 0rem !important;
                   </div>
                 </div>
                 <div class="w-layout-grid layout358_grid-list">
-                  <div class="disclaimers fooddisclaimer">🌱 Items are vegetarian and these can be made vegan on request for +2. We&#x27;ll sub the appropriate ingredients: T.H.C. &#x27;Cheese Sauce&#x27;, Plant Based Butter, Plant Based Sour Cream. Also happy to accommodate dairy free requests. <br><br><br><br><br>‍</div>
+                  <div class="embeds disclaimer w-embed w-script">
+                    <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                      <meta charset="UTF-8">
+                      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                      <title></title>
+                      <link href="https://fonts.googleapis.com/css2?family=Anton:wght@400&family=Anton+SC:wght@400&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
+                      <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 20px;
+      background: transparent;
+    }
+    .menu-section {
+      margin-bottom: 10px;
+      padding: 0;
+    }
+    .section-title {
+      font-family: 'Anton', sans-serif;
+      font-size: 32px;
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 8px;
+      border-bottom: 2px solid white;
+      padding-bottom: 6px;
+      color: white;
+    }
+    .section-description {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      color: white;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .disclaimer {
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      font-weight: normal;
+      color: white;
+      margin-top: 24px;
+      padding: 12px 0;
+    }
+    .item {
+      margin-bottom: 24px;
+    }
+    .text-type-1 {
+      font-family: 'Anton', sans-serif;
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 4px;
+      color: white;
+    }
+    .text-type-2 {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      color: white;
+      margin-bottom: 4px;
+    }
+    .text-type-4 {
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      color: white;
+      margin-bottom: 4px;
+    }
+    .text-type-3 {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: white;
+    }
+    .loading {
+      text-align: center;
+      padding: 20px;
+      color: white;
+    }
+    .error {
+      text-align: center;
+      padding: 20px;
+      color: white;
+      margin: 10px 0;
+    }
+  </style>
+                    </head>
+                    <body>
+                      <div id="menu-food" class="menu-section"></div>
+                      <div id="disclaimers"></div>
+                      <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const sheetURL = "https://docs.google.com/spreadsheets/d/1y6nmb-9QJSjzZnB2I8808U4E-GgTNKFtJwuFiA9sZLc/gviz/tq?tqx=out:json&gid=1327717572";
+      const disclaimerSheetURL = "https://docs.google.com/spreadsheets/d/1y6nmb-9QJSjzZnB2I8808U4E-GgTNKFtJwuFiA9sZLc/gviz/tq?tqx=out:json&gid=1327717572";
+      const container = document.getElementById("menu-food");
+      const disclaimerContainer = document.getElementById("disclaimers");
+      container.innerHTML = '<div class="loading">Loading food menu...</div>';
+      loadSheet();
+      loadDisclaimer();
+      async function loadSheet() {
+        try {
+          const res = await fetch(sheetURL);
+          const text = await res.text();
+          let jsonString = text.substring(47, text.length - 2);
+          const json = JSON.parse(jsonString);
+          if (!json.table || !json.table.rows) {
+            throw new Error("Invalid data from Google Sheets");
+          }
+          const rows = json.table.rows;
+          container.innerHTML = "";
+          function getCellValue(row, colIndex) {
+            if (!row || !row.c || colIndex >= row.c.length || !row.c[colIndex]) return "";
+            const cell = row.c[colIndex];
+            if (!cell || cell.v === null || cell.v === undefined) return "";
+            return String(cell.v).trim();
+          }
+          // Title is in Row 1, Column E (API index 0, 4)
+          const title = getCellValue(rows[0], 4);
+          const description = "";
+          if (title) {
+            const titleDiv = document.createElement("div");
+            titleDiv.className = "section-title";
+            titleDiv.textContent = title;
+            container.appendChild(titleDiv);
+          } else {
+            const titleDiv = document.createElement("div");
+            titleDiv.className = "section-title";
+            titleDiv.textContent = "";
+            container.appendChild(titleDiv);
+          }
+          if (description) {
+            const descDiv = document.createElement("div");
+            descDiv.className = "section-description";
+            descDiv.textContent = description;
+            container.appendChild(descDiv);
+          }
+          // Menu items start from row 1 (index 0) - no headers in API response
+          const startRow = 0;
+          for (let i = startRow; i < rows.length; i++) {
+            const row = rows[i];
+            if (!row || !row.c) continue;
+            let vegIndicator = getCellValue(row, 0);
+            let name = getCellValue(row, 1);
+            let desc = getCellValue(row, 2);
+            let price = getCellValue(row, 3);
+            if (!name || name.length < 2) {
+              continue;
+            }
+            const itemDiv = document.createElement("div");
+            itemDiv.className = "item";
+            const nameDiv = document.createElement("div");
+            nameDiv.className = "text-type-1";
+            nameDiv.textContent = `${vegIndicator === 'Y' ? '🌱 ' : ''}${name}`;
+            itemDiv.appendChild(nameDiv);
+            if (desc) {
+              const descDiv = document.createElement("div");
+              descDiv.className = "text-type-2";
+              descDiv.textContent = desc;
+              itemDiv.appendChild(descDiv);
+            }
+            if (price) {
+              const priceDiv = document.createElement("div");
+              priceDiv.className = "text-type-3";
+              priceDiv.textContent = price;
+              itemDiv.appendChild(priceDiv);
+            }
+            container.appendChild(itemDiv);
+          }
+        } catch (err) {
+          container.innerHTML = `<div class="error">Error loading food menu: ${err.message}</div>`;
+        }
+      }
+      async function loadDisclaimer() {
+        try {
+          const res = await fetch(disclaimerSheetURL);
+          const text = await res.text();
+          let jsonString = text.substring(47, text.length - 2);
+          const json = JSON.parse(jsonString);
+          if (!json.table || !json.table.rows) {
+            return;
+          }
+          const rows = json.table.rows;
+          const disclaimerTexts = [];
+          function getCellValue(row, colIndex) {
+            if (!row || !row.c || colIndex >= row.c.length || !row.c[colIndex]) return "";
+            const cell = row.c[colIndex];
+            if (!cell || cell.v === null || cell.v === undefined) return "";
+            return String(cell.v).trim();
+          }
+          // Start from row 2 (index 1) in column A (index 0)
+          for (let i = 1; i < rows.length; i++) {
+            const row = rows[i];
+            if (!row || !row.c) continue;
+            const disclaimerText = getCellValue(row, 0);
+            if (disclaimerText) {
+              disclaimerTexts.push(disclaimerText);
+            }
+          }
+          if (disclaimerTexts.length > 0) {
+            const disclaimerDiv = document.createElement("div");
+            disclaimerDiv.className = "disclaimer";
+            disclaimerDiv.innerHTML = disclaimerTexts.join('<br><br>');
+            disclaimerContainer.appendChild(disclaimerDiv);
+          }
+        } catch (err) {
+          // Silently skip disclaimer if any error occurs
+        }
+      }
+    });
+  </script>
+                    </body>
+                    </html>
+                  </div>
                 </div>
               </div>
             </div>
